@@ -404,3 +404,5 @@ C:\Users\khale\Desktop\usermanger\UserMangerWithDotNetCore\IdentityLearning\Iden
 C:\Users\khale\Desktop\usermanger\UserMangerWithDotNetCore\IdentityLearning\IdentityLearning\obj\Debug\net5.0\IdentityLearning.pdb
 C:\Users\khale\Desktop\usermanger\UserMangerWithDotNetCore\IdentityLearning\IdentityLearning\obj\Debug\net5.0\IdentityLearning.genruntimeconfig.cache
 C:\Users\khale\Desktop\usermanger\UserMangerWithDotNetCore\IdentityLearning\IdentityLearning\obj\Debug\net5.0\ref\IdentityLearning.dll
+C:\Users\khale\Desktop\usermanger\UserMangerWithDotNetCore\IdentityLearning\IdentityLearning\obj\Debug\net5.0\Razor\Views\IdentityRoles\Index.cshtml.g.cs
+C:\Users\khale\Desktop\usermanger\UserMangerWithDotNetCore\IdentityLearning\IdentityLearning\obj\Debug\net5.0\Razor\Views\IdentityRoles\_AddingRole.cshtml.g.cs

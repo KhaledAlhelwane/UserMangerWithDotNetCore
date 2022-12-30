@@ -1,0 +1,32 @@
+﻿@model IEnumerable<IdentityRole>
+
+
+@{
+	ViewData["Title"] = "Roles";
+}
+
+<h1>Roles</h1>
+<partial name="_AddingRole" model="new  RolesFormViewModel()" />
+<table class="tabel table-striped mt-4">
+	<thead >
+		<tr class="bg-primary text-white">
+		<th>Id</th>
+		<th>Name</th>
+	</tr>
+	
+	</thead>
+	<tbody>
+			@foreach(var x in Model)
+			{
+				<tr>
+				<td>@x.Id</td>
+				<td>
+				@x.Name</td>
+				</tr>
+			}
+		
+	</tbody>
+</table>
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
