@@ -4,8 +4,13 @@
 	ViewData["Title"] = "Users";
 }
 <h1>Users and Roles</h1>
-
-<table class="table table-striped mt-2">
+<div id="_alert" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+	user deleted successfully.
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<table class="table table-striped">
 	<thead>
 		<tr class="bg-primary text-white ">
 			<th>Id</th>
@@ -14,7 +19,9 @@
 		    <th>lasst name</th>
 			<th>Email</th>
 	        <th>Roles</th>
-			<th>Action</th>
+			<th >Action1</th>
+			<th>Action2</th>
+			<th>Action3</th>
             
 		</tr>
 	</thead>
@@ -30,11 +37,68 @@
 				<td>@string.Join(" , ",x.Roles.ToList())</td>
 				<td>
 					<a asp-controller="User" asp-action="MangeRoles" asp-route-userId="@x.id" class="btn btn-primary">Mange Roles</a>
+			</td>	<td>
+					<a asp-controller="User" asp-action="EditUser" asp-route-userId="@x.id" class="btn btn-outline-primary">Edit User</a>
 				</td>
+				<td>
+					<a href="javascript:;"  class="btn btn-danger js-delete" data-id="@x.id">Delete User</a>
+
+				</td>
+				
+					
 			</tr>
 		}
 	</tbody>
 
 
 </table>
+@*<a href="~/lib/jquery/dist/jquery.min.map">~/lib/jquery/dist/jquery.min.map</a>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>*@
 
+@section Scripts{
+
+	<script>
+		$(document).ready(function () {
+			$(".js-delete").click(function () {
+				let b=$(this);
+				bootbox.confirm({
+    message: 'Are you sure to delete this user account?',
+    buttons: {
+        confirm: {
+            label: 'Yes',
+            className: 'btn-success'
+        },
+        cancel: {
+            label: 'No',
+            className: 'btn-danger'
+        }
+    },
+    callback: function (result) {
+					if(result){
+						$.ajax({
+					    url:'Api/ApiUser/?Userid='+b.data('id'),
+						method:'DELETE',
+						success:function(){
+							b.parents('tr').fadeOut();
+							$('#_alert').removeClass('d-none');
+									setTimeout(function () { $('#_alert').addClass('d-none'); },3000);
+						},
+						error:function(){
+							alert("there is an error");
+						}
+
+						});
+					}
+    }
+});
+				
+			});
+		});
+
+
+
+	</script>
+
+
+}

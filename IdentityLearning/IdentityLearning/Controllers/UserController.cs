@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -82,6 +83,60 @@ namespace IdentityLearning.Controllers
 				}
 			}
 			return RedirectToAction(nameof(Index));
+
+		}
+
+		public async Task<IActionResult> EditUser(string UserId) 
+		{
+			var User =await _UserManger.FindByIdAsync(UserId);
+			var ApplicationUser = new ApplicationUser
+			{
+				Id = UserId,
+				Email = User.Email,
+				FirtName = User.FirtName,
+				PhoneNumber = User.PhoneNumber,
+				SecoundName = User.SecoundName,
+				UserName = User.UserName,
+				Picture=User.Picture
+			};
+			return View(ApplicationUser);
+
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> EditUser(ApplicationUser user) 
+		{
+			var _User = await _UserManger.FindByIdAsync(user.Id);
+            if (!ModelState.IsValid)
+				return View(user);
+			var email =await _UserManger.FindByEmailAsync(user.Email);
+			if (email!=null && email.Id != user.Id)
+			{
+				ModelState.AddModelError("Email", "This email is for another user");
+				return View(user);
+			}
+			
+				_User.FirtName = user.FirtName;
+				_User.SecoundName = user.SecoundName;
+				_User.UserName = user.UserName;
+				_User.Email = user.Email;
+			_User.PhoneNumber = user.PhoneNumber;
+			if (Request.Form.Files.Count > 0)
+			{
+				var file = Request.Form.Files.FirstOrDefault();
+				//check file size and extension
+				using (var datestream = new MemoryStream())
+				{
+					await file.CopyToAsync(datestream);
+					_User.Picture = datestream.ToArray();
+				}
+			}
+
+                var result=await _UserManger.UpdateAsync(_User);
+              
+
+            return RedirectToAction(nameof(Index));
 
 		}
 	}

@@ -1,0 +1,56 @@
+﻿@model ApplicationUser
+
+@{
+	ViewData["Title"] = "Update User";
+}
+<h1 class="text-warning">Update User</h1>
+
+<form  method="post" enctype="multipart/form-data">
+    <h4>Create a new account.</h4>
+    <hr />
+    <input hidden asp-for="Id" class="form-control" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirtName"></label>
+        <input asp-for="FirtName" class="form-control" />
+        <span asp-validation-for="FirtName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SecoundName"></label>
+        <input asp-for="SecoundName" class="form-control" />
+        <span asp-validation-for="SecoundName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Picture" calss="w-100"></label>
+        @if (Model.Picture != null)
+        {
+            <img id="pp" alt="image profile" width="150" height="150" src="data:image*;base64,@(Convert.ToBase64String(Model.Picture))" />
+        }
+        else
+        {
+            <img id="pp" alt="profile" src="~/image/ProfilePicture.png" width="150" height="150" />
+        }
+        <div class="custom-file mt-2">
+            <input type="file" accept="image/*" asp-for="Picture" class="custom-file-input"
+                   onchange="document.getElementById('pp').src=window.URL.createObjectURL(this.files[0])" />
+            <label class="custom-file-label">Choose file</label>
+            <span asp-validation-for="Picture" class="text-danger"></span>
+        </div>
+</div>
+        <button type="submit" class="btn btn-primary">Update</button>
+</form>
