@@ -7844,11 +7844,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\khale\\Desktop\\usermanger\\UserMangerWithDotNetCore\\IdentityLearning\\IdentityLearning\\IdentityLearning.csproj",
+      "projectUniqueName": "C:\\Users\\khale\\Desktop\\Asp core projects\\usermanger\\UserMangerWithDotNetCore\\IdentityLearning\\IdentityLearning\\IdentityLearning.csproj",
       "projectName": "IdentityLearning",
-      "projectPath": "C:\\Users\\khale\\Desktop\\usermanger\\UserMangerWithDotNetCore\\IdentityLearning\\IdentityLearning\\IdentityLearning.csproj",
+      "projectPath": "C:\\Users\\khale\\Desktop\\Asp core projects\\usermanger\\UserMangerWithDotNetCore\\IdentityLearning\\IdentityLearning\\IdentityLearning.csproj",
       "packagesPath": "C:\\Users\\khale\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\khale\\Desktop\\usermanger\\UserMangerWithDotNetCore\\IdentityLearning\\IdentityLearning\\obj\\",
+      "outputPath": "C:\\Users\\khale\\Desktop\\Asp core projects\\usermanger\\UserMangerWithDotNetCore\\IdentityLearning\\IdentityLearning\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\khale\\AppData\\Roaming\\NuGet\\NuGet.Config",
